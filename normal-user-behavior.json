@@ -1,0 +1,78 @@
+{
+  "description": "正常用户行为数据集 - 用于建立用户行为基线，测试行为分析模块",
+  "lastUpdated": "2025-05-07",
+  "testUserId": "test-user-20250507",
+  "data": [
+    {
+      "id": "normal-behavior-1",
+      "userId": "{testUserId}",
+      "behaviorType": "pageVisit",
+      "target": "https://normal-edu-site.edu/dashboard",
+      "ipAddress": "192.168.1.100",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "sessionId": "normal-session-1",
+      "referrer": "https://normal-edu-site.edu",
+      "expectedResult": {
+        "isAnomalous": false,
+        "maxAnomalyScore": 0.2
+      }
+    },
+    {
+      "id": "normal-behavior-2",
+      "userId": "{testUserId}",
+      "behaviorType": "login",
+      "target": "https://normal-edu-site.edu/login",
+      "ipAddress": "192.168.1.100",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "sessionId": "normal-session-1",
+      "referrer": "https://normal-edu-site.edu",
+      "expectedResult": {
+        "isAnomalous": false,
+        "maxAnomalyScore": 0.2
+      }
+    },
+    {
+      "id": "normal-behavior-3",
+      "userId": "{testUserId}",
+      "behaviorType": "contentUpload",
+      "target": "https://normal-edu-site.edu/upload",
+      "ipAddress": "192.168.1.100",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "sessionId": "normal-session-1",
+      "metadata": {
+        "fileName": "lecture.pdf",
+        "fileSize": 2048
+      },
+      "expectedResult": {
+        "isAnomalous": false,
+        "maxAnomalyScore": 0.2
+      }
+    },
+    {
+      "id": "normal-behavior-4",
+      "userId": "{testUserId}",
+      "behaviorType": "resourceDownload",
+      "target": "https://normal-edu-site.edu/resources/math101",
+      "ipAddress": "192.168.1.100",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "sessionId": "normal-session-1",
+      "expectedResult": {
+        "isAnomalous": false,
+        "maxAnomalyScore": 0.2
+      }
+    },
+    {
+      "id": "normal-behavior-5",
+      "userId": "{testUserId}",
+      "behaviorType": "gradeSubmission",
+      "target": "https://normal-edu-site.edu/courses/biology/grades",
+      "ipAddress": "192.168.1.100",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "sessionId": "normal-session-1",
+      "expectedResult": {
+        "isAnomalous": false,
+        "maxAnomalyScore": 0.3
+      }
+    }
+  ]
+}
