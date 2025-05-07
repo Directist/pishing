@@ -1,0 +1,42 @@
+{
+  "description": "边缘情况URL数据集 - 用于测试系统对混合多种特征的URL识别能力",
+  "lastUpdated": "2025-05-07",
+  "data": [
+    {
+      "url": "https://unusual-domain-with-long-name-not-quite-phishing-but-suspicious.com",
+      "category": "异常长域名",
+      "characteristics": ["长度异常", "描述性词语", "可疑但非明确"],
+      "notes": "测试系统对异常长但内容并非明确钓鱼的域名判断能力"
+    },
+    {
+      "url": "http://drive.google-docs.preview.download.com",
+      "category": "品牌混合",
+      "characteristics": ["多品牌混合", "合法品牌利用", "多级子域名"],
+      "notes": "测试系统对利用多个知名品牌组合域名的识别能力"
+    },
+    {
+      "url": "https://login.verify-account-microsoftonline.com",
+      "category": "品牌混合",
+      "characteristics": ["品牌变形", "服务词汇混合", "钓鱼关键词"],
+      "notes": "测试系统对结合真实品牌与可疑词汇的域名识别能力"
+    },
+    {
+      "url": "http://phishingtest.psychological-test.com",
+      "category": "包含钓鱼词",
+      "characteristics": ["明确包含'phishing'词", "合法领域", "教育测试类"],
+      "notes": "测试系统对包含钓鱼词但实际为合法目的网站的分辨能力"
+    },
+    {
+      "url": "https://login.secured.legitimate-bank.com/auth",
+      "category": "银行安全区",
+      "characteristics": ["银行词汇", "安全词汇", "合法结构"],
+      "notes": "测试系统对看似正规的银行安全域名及路径的判断能力"
+    },
+    {
+      "url": "https://apple.phishing-test.is-a-security-service.com",
+      "category": "安全测试域名",
+      "characteristics": ["品牌名+钓鱼测试", "明确标识安全服务", "混合结构"],
+      "notes": "测试系统对进行钓鱼安全测试的合法服务的判断能力"
+    }
+  ]
+}
