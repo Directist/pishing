@@ -1,0 +1,51 @@
+{
+  "description": "安全内容数据集 - 用于测试系统对正常内容的识别能力",
+  "lastUpdated": "2025-05-07",
+  "data": [
+    {
+      "id": "safe-content-1",
+      "content": "您好，感谢您订阅我们的服务。如需进一步了解，请访问我们的官方网站 www.example.com，或拨打客服热线 400-123-4567。",
+      "category": "服务通知",
+      "expected": {
+        "isPhishing": false,
+        "minConfidence": 85
+      }
+    },
+    {
+      "id": "safe-content-2",
+      "content": "尊敬的用户，您的订单 #12345 已发货，预计3-5个工作日送达，感谢您的购买。物流单号：SF1234567890，您可以通过官方APP查询物流状态。",
+      "category": "物流通知",
+      "expected": {
+        "isPhishing": false,
+        "minConfidence": 80
+      }
+    },
+    {
+      "id": "safe-content-3",
+      "content": "欢迎使用我们的服务，如有问题请联系客服。您的账户已经完成注册，首次登录请访问 support.example.com 并按提示修改初始密码。如需帮助，可以在工作时间内联系我们的在线客服。",
+      "category": "欢迎信息",
+      "expected": {
+        "isPhishing": false,
+        "minConfidence": 75
+      }
+    },
+    {
+      "id": "safe-content-4",
+      "content": "网络安全月活动开始啦！参与我们的安全知识问答，有机会赢取精美礼品。活动时间：2025年5月1日至31日，参与方式：登录官网-活动中心-安全月专区，我们期待您的参与！",
+      "category": "活动通知",
+      "expected": {
+        "isPhishing": false,
+        "minConfidence": 75
+      }
+    },
+    {
+      "id": "safe-content-5",
+      "content": "亲爱的学生，新学期课程表已经更新，请登录教务系统查看并确认您的选课结果。如发现问题，请在本周内联系教务处调整。祝您学习愉快！",
+      "category": "教育通知",
+      "expected": {
+        "isPhishing": false,
+        "minConfidence": 90
+      }
+    }
+  ]
+}
