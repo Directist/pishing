@@ -1,0 +1,139 @@
+{
+  "description": "AI模型融合策略测试数据 - 用于测试多种融合策略的性能",
+  "lastUpdated": "2025-05-07",
+  "strategies": [
+    {
+      "id": "weightedVoting",
+      "name": "加权投票",
+      "description": "基于不同模型的权重来决定最终判断",
+      "parameters": {
+        "deepseekWeight": 0.7,
+        "kimiWeight": 0.3,
+        "confidenceThreshold": 65
+      }
+    },
+    {
+      "id": "confidenceCascade",
+      "name": "置信度级联",
+      "description": "优先选择置信度高的模型判断",
+      "parameters": {
+        "confidenceThreshold": 80,
+        "minConfidenceDifference": 15
+      }
+    },
+    {
+      "id": "ruleBased",
+      "name": "规则化解决",
+      "description": "基于预定义规则解决模型判断冲突",
+      "parameters": {
+        "safetyFirst": true,
+        "minModelsRequired": 2
+      }
+    },
+    {
+      "id": "consensusVoting",
+      "name": "共识投票",
+      "description": "需要多数模型达成一致",
+      "parameters": {
+        "minConsensusThreshold": 0.66,
+        "tiebreaker": "deepseek"
+      }
+    },
+    {
+      "id": "highestConfidence",
+      "name": "最高置信度",
+      "description": "选择置信度最高的模型判断",
+      "parameters": {
+        "minConfidenceRequired": 70
+      }
+    },
+    {
+      "id": "averageScore",
+      "name": "平均分数",
+      "description": "计算所有模型的平均得分后判断",
+      "parameters": {
+        "phishingThreshold": 65
+      }
+    }
+  ],
+  "testCases": [
+    {
+      "id": "consensus-case",
+      "url": "http://login-validate-account.example.net",
+      "modelResults": [
+        {
+          "model": "deepseek",
+          "isPhishing": true,
+          "confidence": 82,
+          "riskLevel": "high"
+        },
+        {
+          "model": "kimi",
+          "isPhishing": true,
+          "confidence": 75,
+          "riskLevel": "medium"
+        }
+      ],
+      "expectedResultsByStrategy": {
+        "weightedVoting": { "isPhishing": true, "minConfidence": 80 },
+        "confidenceCascade": { "isPhishing": true, "minConfidence": 82 },
+        "ruleBased": { "isPhishing": true, "minConfidence": 78 },
+        "consensusVoting": { "isPhishing": true, "minConfidence": 75 },
+        "highestConfidence": { "isPhishing": true, "minConfidence": 82 },
+        "averageScore": { "isPhishing": true, "minConfidence": 78 }
+      }
+    },
+    {
+      "id": "conflict-case",
+      "url": "https://unusual-domain-with-long-name-not-quite-phishing-but-suspicious.com",
+      "modelResults": [
+        {
+          "model": "deepseek",
+          "isPhishing": true,
+          "confidence": 65,
+          "riskLevel": "medium"
+        },
+        {
+          "model": "kimi",
+          "isPhishing": false,
+          "confidence": 70,
+          "riskLevel": "low"
+        }
+      ],
+      "expectedResultsByStrategy": {
+        "weightedVoting": { "isPhishing": true, "minConfidence": 65 },
+        "confidenceCascade": { "isPhishing": false, "minConfidence": 70 },
+        "ruleBased": { "isPhishing": false, "minConfidence": 60 },
+        "consensusVoting": { "isPhishing": true, "minConfidence": 65 },
+        "highestConfidence": { "isPhishing": false, "minConfidence": 70 },
+        "averageScore": { "isPhishing": false, "minConfidence": 60 }
+      }
+    },
+    {
+      "id": "confidence-gap-case",
+      "url": "https://login.verify-account-microsoftonline.com",
+      "modelResults": [
+        {
+          "model": "deepseek",
+          "isPhishing": true,
+          "confidence": 95,
+          "riskLevel": "critical"
+        },
+        {
+          "model": "kimi",
+          "isPhishing": true,
+          "confidence": 60,
+          "riskLevel": "medium"
+        }
+      ],
+      "expectedResultsByStrategy": {
+        "weightedVoting": { "isPhishing": true, "minConfidence": 85 },
+        "confidenceCascade": { "isPhishing": true, "minConfidence": 95 },
+        "ruleBased": { "isPhishing": true, "minConfidence": 90 },
+        "consensusVoting": { "isPhishing": true, "minConfidence": 80 },
+        "highestConfidence": { "isPhishing": true, "minConfidence": 95 },
+        "averageScore": { "isPhishing": true, "minConfidence": 78 }
+      }
+    }
+  ]
+}
