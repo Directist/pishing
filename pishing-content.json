@@ -1,0 +1,62 @@
+{
+  "description": "钓鱼内容数据集 - 用于测试系统对钓鱼内容的识别能力",
+  "lastUpdated": "2025-05-07",
+  "note": "这些内容仅用于测试，模拟真实钓鱼内容",
+  "data": [
+    {
+      "id": "phish-content-1",
+      "content": "紧急通知：您的账户已被锁定，请立即点击链接验证您的身份信息：http://verify-account.example.com/verify?user=123456。若不及时处理，您的账户将被永久冻结。",
+      "category": "账户锁定钓鱼",
+      "technique": "紧急感+恐惧心理",
+      "expected": {
+        "isPhishing": true,
+        "minConfidence": 85,
+        "minRiskLevel": "high"
+      }
+    },
+    {
+      "id": "phish-content-2",
+      "content": "重要通知：您的账户即将被锁定，请立即点击链接更新您的信息: http://secure-login.example.com/update。为避免服务中断，请在24小时内完成验证。客服中心：400-100-8888。",
+      "category": "账户更新钓鱼",
+      "technique": "时间压力+服务中断威胁",
+      "expected": {
+        "isPhishing": true,
+        "minConfidence": 80,
+        "minRiskLevel": "medium"
+      }
+    },
+    {
+      "id": "phish-content-3",
+      "content": "您好，我们检测到您的银行账户存在异常活动，需要您立即验证您的账户密码和安全信息，否则您的账户将被永久冻结。请回复此邮件并提供您的账号、密码和手机号以便我们进行验证。",
+      "category": "银行验证钓鱼",
+      "technique": "直接索要凭证+威胁冻结",
+      "expected": {
+        "isPhishing": true,
+        "minConfidence": 95,
+        "minRiskLevel": "critical"
+      }
+    },
+    {
+      "id": "phish-content-4",
+      "content": "您的银行卡已被暂停使用，请立即拨打电话 0086-10-12345678 并提供您的银行卡号码和密码进行验证。为了您的资金安全，请不要告诉任何人您收到了此消息。",
+      "category": "银行卡钓鱼",
+      "technique": "恐惧+保密要求",
+      "expected": {
+        "isPhishing": true,
+        "minConfidence": 90,
+        "minRiskLevel": "high"
+      }
+    },
+    {
+      "id": "phish-content-5",
+      "content": "恭喜！您已被选中获得价值1000元的电子礼品卡。领取方式：请点击 http://reward-claim.example.net/gift 并输入您的个人信息和银行卡详情以接收奖励。名额有限，请在1小时内完成！",
+      "category": "奖励钓鱼",
+      "technique": "贪婪诱导+时间限制",
+      "expected": {
+        "isPhishing": true,
+        "minConfidence": 85,
+        "minRiskLevel": "high"
+      }
+    }
+  ]
+}
