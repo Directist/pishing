@@ -1,0 +1,94 @@
+{
+  "description": "异常用户行为数据集 - 用于测试系统对异常行为的检测能力",
+  "lastUpdated": "2025-05-07",
+  "testUserId": "test-user-20250507",
+  "data": [
+    {
+      "id": "anomalous-behavior-1",
+      "userId": "{testUserId}",
+      "behaviorType": "fileUpload",
+      "target": "https://suspicious-site.com/upload",
+      "ipAddress": "87.123.45.67",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "sessionId": "suspicious-session-1",
+      "metadata": {
+        "fileName": "malware.exe",
+        "fileSize": 1024
+      },
+      "description": "可疑文件上传",
+      "anomalyFactors": ["可疑文件类型", "未知域名", "非常规IP"],
+      "expectedResult": {
+        "isAnomalous": true,
+        "minAnomalyScore": 0.7,
+        "expectedReasons": ["suspicious_file_type", "unusual_domain"]
+      }
+    },
+    {
+      "id": "anomalous-behavior-2",
+      "userId": "{testUserId}",
+      "behaviorType": "dataAccess",
+      "target": "https://normal-edu-site.edu/admin/all-users",
+      "ipAddress": "87.123.45.67",
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; SM-G973F)",
+      "sessionId": "suspicious-session-2",
+      "timestamp": "{earlyMorningTime}",
+      "description": "非常规时间敏感操作",
+      "anomalyFactors": ["凌晨操作", "敏感数据访问", "非常规IP", "设备变更"],
+      "expectedResult": {
+        "isAnomalous": true,
+        "minAnomalyScore": 0.8,
+        "expectedReasons": ["unusual_time", "unusual_ip", "sensitive_operation"]
+      }
+    },
+    {
+      "id": "anomalous-behavior-3",
+      "userId": "{testUserId}",
+      "behaviorType": "configUpdate",
+      "target": "https://normal-edu-site.edu/admin/security-settings",
+      "ipAddress": "192.168.1.100",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64)",
+      "sessionId": "suspicious-session-3",
+      "referrer": "https://phishing-site.com",
+      "description": "可疑引荐来源",
+      "anomalyFactors": ["安全配置修改", "可疑引荐源", "操作系统变更"],
+      "expectedResult": {
+        "isAnomalous": true,
+        "minAnomalyScore": 0.6,
+        "expectedReasons": ["suspicious_referrer", "security_config_change"]
+      }
+    },
+    {
+      "id": "anomalous-behavior-4",
+      "userId": "{testUserId}",
+      "behaviorType": "passwordReset",
+      "target": "https://normal-edu-site.edu/reset-password",
+      "ipAddress": "51.89.235.12",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "sessionId": "suspicious-session-4",
+      "description": "从未见过的IP地址",
+      "anomalyFactors": ["敏感操作", "全新IP地址", "地理位置异常"],
+      "expectedResult": {
+        "isAnomalous": true,
+        "minAnomalyScore": 0.7,
+        "expectedReasons": ["unusual_ip", "sensitive_operation"]
+      }
+    },
+    {
+      "id": "anomalous-behavior-5",
+      "userId": "{testUserId}",
+      "behaviorType": "userManagement",
+      "target": "https://normal-edu-site.edu/admin/permissions",
+      "ipAddress": "192.168.1.100",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "sessionId": "suspicious-session-5",
+      "timestamp": "{lateNightTime}",
+      "description": "频繁权限修改",
+      "anomalyFactors": ["非常规时间", "权限修改", "短时间多次操作"],
+      "expectedResult": {
+        "isAnomalous": true,
+        "minAnomalyScore": 0.65,
+        "expectedReasons": ["unusual_time", "frequent_admin_operations"]
+      }
+    }
+  ]
+}
