@@ -1,0 +1,54 @@
+{
+  "description": "安全URL数据集 - 用于测试系统对安全网站的正确识别能力",
+  "lastUpdated": "2025-05-07",
+  "data": [
+    {
+      "url": "https://www.google.com",
+      "category": "搜索引擎",
+      "expected": {
+        "isPhishing": false,
+        "minConfidence": 80
+      }
+    },
+    {
+      "url": "https://www.microsoft.com",
+      "category": "技术公司",
+      "expected": {
+        "isPhishing": false,
+        "minConfidence": 85
+      }
+    },
+    {
+      "url": "https://www.baidu.com",
+      "category": "搜索引擎",
+      "expected": {
+        "isPhishing": false,
+        "minConfidence": 80
+      }
+    },
+    {
+      "url": "https://www.github.com",
+      "category": "开发平台",
+      "expected": {
+        "isPhishing": false,
+        "minConfidence": 90
+      }
+    },
+    {
+      "url": "https://www.edu.cn",
+      "category": "教育网站",
+      "expected": {
+        "isPhishing": false,
+        "minConfidence": 90
+      }
+    },
+    {
+      "url": "https://www.apple.com",
+      "category": "技术公司",
+      "expected": {
+        "isPhishing": false,
+        "minConfidence": 85
+      }
+    }
+  ]
+}
