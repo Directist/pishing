@@ -1,0 +1,67 @@
+{
+  "description": "可疑钓鱼URL数据集 - 用于测试系统对钓鱼网站的识别能力",
+  "lastUpdated": "2025-05-07",
+  "note": "这些URL仅用于测试，并非真实的钓鱼网站",
+  "data": [
+    {
+      "url": "http://secure-verification-login.example.com",
+      "category": "账户验证钓鱼",
+      "technique": "品牌仿冒",
+      "expected": {
+        "isPhishing": true,
+        "minConfidence": 75,
+        "minRiskLevel": "medium"
+      }
+    },
+    {
+      "url": "http://bank-account-verify.test-domain.example",
+      "category": "银行钓鱼",
+      "technique": "身份欺骗",
+      "expected": {
+        "isPhishing": true,
+        "minConfidence": 80,
+        "minRiskLevel": "high"
+      }
+    },
+    {
+      "url": "http://verify-account.example.com/login.php?account=verify",
+      "category": "账户验证钓鱼",
+      "technique": "URL操纵",
+      "expected": {
+        "isPhishing": true,
+        "minConfidence": 85,
+        "minRiskLevel": "high"
+      }
+    },
+    {
+      "url": "https://microsoft-update-security.example.net",
+      "category": "软件更新钓鱼",
+      "technique": "品牌仿冒",
+      "expected": {
+        "isPhishing": true,
+        "minConfidence": 75,
+        "minRiskLevel": "medium"
+      }
+    },
+    {
+      "url": "https://paypal-secure-login.verify-now.example.org",
+      "category": "支付服务钓鱼",
+      "technique": "多重品牌混淆",
+      "expected": {
+        "isPhishing": true,
+        "minConfidence": 90,
+        "minRiskLevel": "high"
+      }
+    },
+    {
+      "url": "http://banking-login-secure.accounts-verify.example.com",
+      "category": "银行钓鱼",
+      "technique": "多重子域名欺骗",
+      "expected": {
+        "isPhishing": true,
+        "minConfidence": 85,
+        "minRiskLevel": "high"
+      }
+    }
+  ]
+}
